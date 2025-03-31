@@ -17,6 +17,8 @@ if net.empty():
     exit()
 
 cap = cv2.VideoCapture(0)
+cap.set(3, 1920)
+cap.set(4, 1080)
 
 if not cap.isOpened():
     print("ERROR: The camera could not be turned on!")
@@ -27,6 +29,8 @@ while True:
     if not ret:
         print("ERROR: Failed to capture frame from the camera.")
         break
+
+    frame = cv2.flip(frame, 1)
 
     (H, W) = frame.shape[:2]
 
